@@ -2,6 +2,7 @@ package br.com.treinaweb.estruturadados.main;
 
 import java.util.Scanner;
 
+import br.com.treinaweb.estruturadados.listaligada.ListaDuplamenteLigada;
 import br.com.treinaweb.estruturadados.listaligada.ListaLigada;
 import br.com.treinaweb.estruturadados.modelos.Pessoa;
 import br.com.treinaweb.estruturadados.vetores.Vetor;
@@ -14,6 +15,7 @@ public class Main {
 		System.out.println("1. Gerenciamento de memoria");
 		System.out.println("2. Fazer vetores");
 		System.out.println("3. Lista ligada");
+		System.out.println("4. Lista duplamente ligada");
 
 		Scanner scanner = new Scanner(System.in);
 		int opcao = scanner.nextInt();
@@ -28,8 +30,19 @@ public class Main {
 		case 3:
 			fazerListaLigada();
 			break;
+		case 4:
+			fazerListaDuplamenteLigada();
+			break;
 		}
 		scanner.close();
+	}
+
+	private static void fazerListaDuplamenteLigada() {
+		ListaDuplamenteLigada<Pessoa> listaPessoas = new ListaDuplamenteLigada<Pessoa>();
+		listaPessoas.inserir(new Pessoa(1, "TreinaWeb 1"));
+		listaPessoas.inserir(new Pessoa(2, "TreinaWeb 2"));
+		listaPessoas.inserir(new Pessoa(3, "TreinaWeb 3"));
+		System.out.println(listaPessoas.toString());
 	}
 
 	private static void fazerListaLigada() {
@@ -69,33 +82,33 @@ public class Main {
 		// Importante lembrar que o índice começa no 0
 
 		Vetor<Pessoa> vetorPessoas = new Vetor<Pessoa>();
-		
+
 		vetorPessoas.inserir(new Pessoa(1, "TreinaWeb 1"));
 		vetorPessoas.inserir(new Pessoa(2, "TreinaWeb 2"));
 		vetorPessoas.inserir(new Pessoa(3, "TreinaWeb 3"));
 		vetorPessoas.inserir(new Pessoa(4, "TreinaWeb 4"));
-		vetorPessoas.inserirEm(1, new Pessoa(5, "TreinaWeb 5"));		
+		vetorPessoas.inserirEm(1, new Pessoa(5, "TreinaWeb 5"));
 		System.out.println(vetorPessoas);
 		System.out.println(" ** LISTA de PESSOAS: ");
 		for (int i = 0; i < vetorPessoas.tamanho(); i++) {
 			System.out.println(vetorPessoas.recuperar(i).getNome());
 		}
-		
+
 		Pessoa p = vetorPessoas.recuperar(1);
 		Pessoa pessoaErrada = new Pessoa(100, "Treina 100");
 		System.out.println(vetorPessoas.contem(p));
 		System.out.println(vetorPessoas.contem(pessoaErrada));
 		System.out.println(vetorPessoas.indice(p));
 		System.out.println(vetorPessoas.indice(pessoaErrada));
-		
-		//Remoção de elementos
-		
+
+		// Remoção de elementos
+
 		vetorPessoas.remover(2);
 		System.out.println(vetorPessoas.toString());
-		
+
 		vetorPessoas.remover(p);
 		System.out.println(vetorPessoas.toString());
-		
+
 //		vetorPessoas.inserirEm(1, new Pessoa(1, "JoaoRiuto"));
 //
 //		System.out.println(vetorPessoas.recuperar(1).getNome());
