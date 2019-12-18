@@ -5,6 +5,7 @@ import java.util.Scanner;
 import br.com.treinaweb.estruturadados.listaligada.ListaDuplamenteLigada;
 import br.com.treinaweb.estruturadados.listaligada.ListaLigada;
 import br.com.treinaweb.estruturadados.modelos.Pessoa;
+import br.com.treinaweb.estruturadados.pilhas.Pilha;
 import br.com.treinaweb.estruturadados.vetores.Vetor;
 
 public class Main {
@@ -16,6 +17,7 @@ public class Main {
 		System.out.println("2. Fazer vetores");
 		System.out.println("3. Lista ligada");
 		System.out.println("4. Lista duplamente ligada");
+		System.out.println("5. Pilha");
 
 		Scanner scanner = new Scanner(System.in);
 		int opcao = scanner.nextInt();
@@ -33,8 +35,21 @@ public class Main {
 		case 4:
 			fazerListaDuplamenteLigada();
 			break;
+		case 5:
+			fazerPilha();
+			break;
 		}
 		scanner.close();
+	}
+
+	private static void fazerPilha() {
+		Pilha<Pessoa> pilhaPessoas = new Pilha<Pessoa>();
+		pilhaPessoas.empilhar(new Pessoa(1, "TreinaWeb 1"));
+		pilhaPessoas.empilhar(new Pessoa(2, "TreinaWeb 2"));
+		pilhaPessoas.empilhar(new Pessoa(3, "TreinaWeb 3"));
+		Pessoa p1 = pilhaPessoas.desempilhar();
+		System.out.println(p1.toString());
+		
 	}
 
 	private static void fazerListaDuplamenteLigada() {
