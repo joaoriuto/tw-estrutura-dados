@@ -18,7 +18,7 @@ public class TabelaEspalhamento<T> {
 
 	public boolean inserir(T elemento) {
 
-		if (this.contem(elemento)) {
+		if (elemento == null || this.contem(elemento)) {
 			return false;
 		}
 		int numeroEspalhamento = this.gerarNumeroEspalhamento(elemento);
@@ -46,7 +46,7 @@ public class TabelaEspalhamento<T> {
 	}
 
 	private int gerarNumeroEspalhamento(T elemento) {
-		return elemento.hashCode() % this.numeroCategorias;
+		return Math.abs(elemento.hashCode() % this.numeroCategorias);
 	}
 
 	@Override
